@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.4.0",
+  "latest": "1.5.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,19 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.5.0",
+      "date": "2026-10-31",
+      "type": "minor",
+      "changes": [
+        "Новое: маршрутизаторы и межсетевые экраны на карте",
+        "Новое: модель оборудования и IP прямо в форме нового объекта, «+ Новая» — свой тип или модель",
+        "Изменено: левая панель без дублей верхнего меню"
+      ],
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.4.0",
       "date": "2026-10-31",

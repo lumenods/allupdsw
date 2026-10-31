@@ -120,7 +120,7 @@ curl -fsS --max-time 5 https://raw.githubusercontent.com/lumenods/allupdsw/main/
 
 | Проект | Последняя версия | Репозиторий |
 |---|---|---|
-| [netmap](netmap.json) — карта сети | 1.4.0 | https://github.com/lumenods/NetMap |
+| [netmap](netmap.json) — карта сети | 1.5.0 | https://github.com/lumenods/NetMap |
 
 ## Лицензия
 
