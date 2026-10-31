@@ -7,7 +7,7 @@
   "update_commands": {
     "linux": [
       "su -",
-      "cd /root/NetMap",
+      "cd /opt/NetMap",
       "git checkout main",
       "git pull",
       "sh deploy/install.sh"
