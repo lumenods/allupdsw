@@ -29,7 +29,8 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
 | Поле | Обяз. | Описание |
 |---|---|---|
 | `project` | да | Имя проекта (`a-z 0-9 _ -`), совпадает с именем файла |
-| `title` | нет | Человекочитаемое название |
+| `title` | нет | Человекочитаемое название (RU) |
+| `title_en` | нет | Название на английском |
 | `repository` | да | Ссылка на репозиторий проекта |
 | `latest` | да | Последняя версия; должна совпадать с `versions[0].version` |
 | `update_commands` | да | Команды обновления по способу установки: `linux`, `docker`, `windows`… |
@@ -37,7 +38,8 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
 | `versions[].version` | да | `X.Y.Z` |
 | `versions[].date` | да | `YYYY-MM-DD` |
 | `versions[].type` | да | `initial` (1.0.0), `patch` (3-я цифра), `minor` (2-я), `major` (1-я) |
-| `versions[].changes` | да | Список изменений («Что нового») |
+| `versions[].changes` | да | Список изменений «Что нового» (RU, язык по умолчанию) |
+| `versions[].changes_en` | реком. | То же на английском; без него валидатор выдаёт предупреждение |
 | `versions[].breaking` | нет | Несовместимые изменения: перед обновлением показать предупреждение |
 | `versions[].security` | нет | Исправления безопасности: пометить обновление как срочное |
 | `versions[].min_upgrade_from` | нет | С какой минимальной версии можно обновиться напрямую |
@@ -64,7 +66,7 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
 2. **Запрос:** GET на адрес выше, таймаут 5 с, заголовок `User-Agent: <проект>/<версия>`.
    Хранить ответ и `ETag`; повторные запросы отправлять с `If-None-Match`.
 3. **Сравнение:** версии сравниваются как числа (`1.10.0 > 1.9.0`), а не как строки.
-4. **Что показать:** все версии новее текущей с их `changes`, отметки `breaking` и `security`,
+4. **Что показать:** все версии новее текущей с их `changes` (или `changes_en`, если язык пользователя английский и перевод есть), отметки `breaking` и `security`,
    а также команды для способа установки этого экземпляра (`linux`, `docker`…).
    Если в одной из версий есть свои `update_commands`, показывать их.
    Если текущая версия ниже `min_upgrade_from`, предложить обновляться поэтапно.
@@ -84,7 +86,7 @@ import json, urllib.request
 
 def vtuple(v): return tuple(int(x) for x in v.split("."))
 
-def check_updates(project, current, install="linux", timeout=5):
+def check_updates(project, current, install="linux", lang="ru", timeout=5):
     url = f"https://raw.githubusercontent.com/lumenods/allupdsw/main/{project}.json"
     req = urllib.request.Request(url, headers={"User-Agent": f"{project}/{current}"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -102,7 +104,8 @@ def check_updates(project, current, install="linux", timeout=5):
         "breaking": any(v.get("breaking") for v in newer),
         "security": any(v.get("security") for v in newer),
         "stepwise": "min_upgrade_from" in latest and cur < vtuple(latest["min_upgrade_from"]),
-        "changes": [{"version": v["version"], "date": v["date"], "changes": v["changes"]} for v in newer],
+        "changes": [{"version": v["version"], "date": v["date"],
+                     "changes": (lang == "en" and v.get("changes_en")) or v["changes"]} for v in newer],
         "commands": cmds,
     }
 ```

@@ -2,6 +2,7 @@
   "$schema": "./schema/project.schema.json",
   "project": "project-name",
   "title": "Название проекта",
+  "title_en": "Project name",
   "repository": "https://github.com/lumenods/project-name",
   "latest": "1.0.0",
   "update_commands": {
@@ -23,6 +24,9 @@
       "type": "initial",
       "changes": [
         "Первый релиз"
+      ],
+      "changes_en": [
+        "Initial release"
       ],
       "breaking": false,
       "security": false

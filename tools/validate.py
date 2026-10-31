@@ -14,8 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SEMVER = re.compile(r"^(\d+)\.(\d+)\.(\d+)$")
 NAME = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
-TOP_KEYS = {"$schema", "project", "title", "repository", "latest", "update_commands", "versions"}
-VER_KEYS = {"version", "date", "type", "changes", "breaking", "security", "min_upgrade_from", "update_commands"}
+TOP_KEYS = {"$schema", "project", "title", "title_en", "repository", "latest", "update_commands", "versions"}
+VER_KEYS = {"version", "date", "type", "changes", "changes_en", "breaking", "security", "min_upgrade_from", "update_commands"}
 TYPES = {"initial", "patch", "minor", "major"}
 
 
@@ -32,7 +32,8 @@ def bump_type(newer, older):
     return "patch"
 
 
-def check(path: Path):
+def check(path: Path, warns=None):
+    warns = [] if warns is None else warns
     errs = []
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -95,6 +96,12 @@ def check(path: Path):
         ch = v.get("changes")
         if not isinstance(ch, list) or not ch or not all(isinstance(c, str) and c.strip() for c in ch):
             errs.append(f"{where}: changes — непустой список строк")
+        if "changes_en" in v:
+            ce = v["changes_en"]
+            if not isinstance(ce, list) or not ce or not all(isinstance(c, str) and c.strip() for c in ce):
+                errs.append(f"{where}: changes_en — непустой список строк")
+        else:
+            warns.append(f"{where}: нет changes_en (английский перевод)")
         for flag in ("breaking", "security"):
             if flag in v and not isinstance(v[flag], bool):
                 errs.append(f"{where}: {flag} должен быть true/false")
@@ -131,7 +138,10 @@ def main(argv):
     files = [Path(a) for a in argv] if argv else sorted(ROOT.glob("*.json"))
     bad = 0
     for f in files:
-        errs = check(f)
+        warns = []
+        errs = check(f, warns)
+        for w in warns:
+            print(f"! {f.name}: {w}")
         if errs:
             bad += 1
             print(f"✗ {f.name}")
