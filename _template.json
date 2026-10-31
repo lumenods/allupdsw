@@ -1,0 +1,31 @@
+{
+  "$schema": "./schema/project.schema.json",
+  "project": "project-name",
+  "title": "Название проекта",
+  "repository": "https://github.com/lumenods/project-name",
+  "latest": "1.0.0",
+  "update_commands": {
+    "linux": [
+      "cd /opt/project-name",
+      "git pull",
+      "./scripts/update.sh"
+    ],
+    "docker": [
+      "cd /opt/project-name",
+      "docker compose pull",
+      "docker compose up -d"
+    ]
+  },
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-31",
+      "type": "initial",
+      "changes": [
+        "Первый релиз"
+      ],
+      "breaking": false,
+      "security": false
+    }
+  ]
+}
