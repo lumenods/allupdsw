@@ -15,7 +15,9 @@
 | `_template.json` | Шаблон для нового проекта |
 | `schema/project.schema.json` | JSON Schema формата (подсказки и проверка в редакторе) |
 | `tools/validate.py` | Проверка файлов (без зависимостей) |
-| `.github/workflows/validate.yml` | Автопроверка при каждом push и pull request |
+| `tools/update_client.py` | Эталонный клиент проверки обновлений (Python, без зависимостей) |
+| `tests/` | Автотесты валидатора, клиента и всех файлов реестра |
+| `.github/workflows/validate.yml` | Автопроверка и тесты при каждом push и pull request |
 | `DEVELOPMENT_CONCEPT.md` | Концепция разработки для всех проектов |
 
 ## Адрес для проектов
@@ -29,7 +31,8 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
 | Поле | Обяз. | Описание |
 |---|---|---|
 | `project` | да | Имя проекта (`a-z 0-9 _ -`), совпадает с именем файла |
-| `title` | нет | Человекочитаемое название |
+| `title` | нет | Человекочитаемое название (RU) |
+| `title_en` | нет | Название на английском |
 | `repository` | да | Ссылка на репозиторий проекта |
 | `latest` | да | Последняя версия; должна совпадать с `versions[0].version` |
 | `update_commands` | да | Команды обновления по способу установки: `linux`, `docker`, `windows`… |
@@ -37,7 +40,8 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
 | `versions[].version` | да | `X.Y.Z` |
 | `versions[].date` | да | `YYYY-MM-DD` |
 | `versions[].type` | да | `initial` (1.0.0), `patch` (3-я цифра), `minor` (2-я), `major` (1-я) |
-| `versions[].changes` | да | Список изменений («Что нового») |
+| `versions[].changes` | да | Список изменений «Что нового» (RU, язык по умолчанию) |
+| `versions[].changes_en` | реком. | То же на английском; без него валидатор выдаёт предупреждение |
 | `versions[].breaking` | нет | Несовместимые изменения: перед обновлением показать предупреждение |
 | `versions[].security` | нет | Исправления безопасности: пометить обновление как срочное |
 | `versions[].min_upgrade_from` | нет | С какой минимальной версии можно обновиться напрямую |
@@ -50,7 +54,7 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
 
 1. Поднять версию в коде проекта, обновить CHANGELOG и справку, создать git-тег `vX.Y.Z`.
 2. В этом репозитории добавить запись **в начало** `versions` в `<проект>.json` и поменять `latest`.
-3. Выполнить `python3 tools/validate.py` (то же самое проверит GitHub Actions).
+3. Выполнить `python3 tools/validate.py` и `python3 -m unittest discover -s tests` (то же самое проверит GitHub Actions).
 4. Сделать commit и push. Проекты увидят новую версию при следующей проверке.
 
 Новый проект: скопировать `_template.json` в `<проект>.json` и заменить значения.
@@ -64,7 +68,7 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
 2. **Запрос:** GET на адрес выше, таймаут 5 с, заголовок `User-Agent: <проект>/<версия>`.
    Хранить ответ и `ETag`; повторные запросы отправлять с `If-None-Match`.
 3. **Сравнение:** версии сравниваются как числа (`1.10.0 > 1.9.0`), а не как строки.
-4. **Что показать:** все версии новее текущей с их `changes`, отметки `breaking` и `security`,
+4. **Что показать:** все версии новее текущей с их `changes` (или `changes_en`, если язык пользователя английский и перевод есть), отметки `breaking` и `security`,
    а также команды для способа установки этого экземпляра (`linux`, `docker`…).
    Если в одной из версий есть свои `update_commands`, показывать их.
    Если текущая версия ниже `min_upgrade_from`, предложить обновляться поэтапно.
@@ -77,34 +81,27 @@ https://raw.githubusercontent.com/lumenods/allupdsw/main/<проект>.json
    `POST /api/v1/updates/check` — проверить сейчас.
 8. **Отладка:** в режиме debug в журнал пишутся адрес, HTTP-код, время ответа и разобранный результат.
 
-### Пример клиента (Python, стандартная библиотека)
+### Эталонный клиент (Python)
+
+Готовая реализация алгоритма: [`tools/update_client.py`](tools/update_client.py). Её можно скопировать в Python-проект
+как есть или взять как образец для других языков. Клиент поддерживает HTTP(S), `file://` и локальный путь
+(для закрытых сетей и зеркал). Любой сбой (сеть, 404, битый JSON) приводит к одному исключению `UpdateCheckError`,
+поэтому проект ловит одну ошибку, пишет её в журнал и продолжает работу.
 
 ```python
-import json, urllib.request
+from update_client import check_updates, UpdateCheckError
 
-def vtuple(v): return tuple(int(x) for x in v.split("."))
+try:
+    info = check_updates("myproject", "1.0.0", install="docker", lang="en")
+except UpdateCheckError as e:
+    log.warning("update check failed: %s", e)
+```
 
-def check_updates(project, current, install="linux", timeout=5):
-    url = f"https://raw.githubusercontent.com/lumenods/allupdsw/main/{project}.json"
-    req = urllib.request.Request(url, headers={"User-Agent": f"{project}/{current}"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        data = json.load(r)
-    cur = vtuple(current)
-    newer = [v for v in data["versions"] if vtuple(v["version"]) > cur]
-    if not newer:
-        return {"update_available": False, "current": current}
-    latest = newer[0]
-    cmds = (latest.get("update_commands") or data["update_commands"]).get(install, [])
-    return {
-        "update_available": True,
-        "current": current,
-        "latest": data["latest"],
-        "breaking": any(v.get("breaking") for v in newer),
-        "security": any(v.get("security") for v in newer),
-        "stepwise": "min_upgrade_from" in latest and cur < vtuple(latest["min_upgrade_from"]),
-        "changes": [{"version": v["version"], "date": v["date"], "changes": v["changes"]} for v in newer],
-        "commands": cmds,
-    }
+Результат: `update_available`, `current`, `latest`, `ahead` (текущая версия новее реестра), `breaking`, `security`,
+`stepwise`, `min_upgrade_from`, `changes[]` (на выбранном языке), `commands`, `install_methods`.
+
+```bash
+python3 tools/update_client.py myproject 1.0.0 --install docker --lang en
 ```
 
 ### Пример (bash)
@@ -116,11 +113,25 @@ curl -fsS --max-time 5 https://raw.githubusercontent.com/lumenods/allupdsw/main/
 > Примечание: `raw.githubusercontent.com` кэширует файлы до ~5 минут, поэтому новая версия
 > становится видна проектам не сразу после push.
 
+## Тестирование
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+Тесты покрывают:
+- **валидатор**: каждое правило по отдельности, включая формат версий, порядок, соответствие `type` номеру версии,
+  даты, `changes`/`changes_en`, флаги, `min_upgrade_from`, лишние ключи и коды выхода;
+- **клиент**: новая версия есть / нет / текущая новее реестра, сравнение `1.10.0 > 1.9.0`, язык и запасной вариант,
+  способы установки, команды отдельной версии, флаги, поэтапное обновление, битые записи;
+- **реальный HTTP**: 404, битый JSON, недоступный хост, локальный файл, CLI;
+- **репозиторий**: все `*.json` реестра проходят проверку, а схема совпадает с правилами валидатора.
+
 ## Проекты
 
 | Проект | Последняя версия | Репозиторий |
 |---|---|---|
-| [netmap](netmap.json) — карта сети | 1.5.1 | https://github.com/lumenods/NetMap |
+| [netmap](netmap.json) — карта сети | 1.6.0 | https://github.com/lumenods/NetMap |
 
 ## Лицензия
 

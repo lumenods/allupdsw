@@ -127,7 +127,7 @@ def check(path: Path, warns=None):
         prev = (pv, v)
 
     last = vers[-1]
-    if parse(last.get("version")) == (1, 0, 0) and last.get("type") != "initial":
+    if isinstance(last, dict) and parse(last.get("version")) == (1, 0, 0) and last.get("type") != "initial":
         errs.append("версия 1.0.0 должна иметь type 'initial'")
     if isinstance(vers[0], dict) and data["latest"] != vers[0].get("version"):
         errs.append(f"latest '{data['latest']}' не равен первой версии в списке '{vers[0].get('version')}'")
