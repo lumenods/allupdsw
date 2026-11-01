@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.7.1",
+  "latest": "1.8.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.8.0",
+      "date": "2026-11-01",
+      "type": "minor",
+      "changes": [
+        "Новое: установщик показывает, что меняется в сторонних компонентах (MapLibre, Python-пакеты) и какие обновления есть у PostgreSQL, nginx и др.",
+        "Новое: системные пакеты обновляются отдельно, по вашему решению, с сохранением прежних версий и откатом (deploy/components.sh)",
+        "Новое: откат Python-окружения одной командой; план перехода на новую основную версию PostgreSQL",
+        "Изменено: установщик больше не обновляет системные пакеты молча"
+      ],
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.7.1",
       "date": "2026-11-01",
