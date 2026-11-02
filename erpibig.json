@@ -1,0 +1,67 @@
+{
+  "$schema": "./schema/project.schema.json",
+  "project": "erpibig",
+  "title": "ErpiBig — ERP/CRM провайдера",
+  "title_en": "ErpiBig — ISP ERP/CRM",
+  "repository": "https://github.com/lumenods/erpibig",
+  "latest": "1.1.0",
+  "update_commands": {
+    "linux": [
+      "su -",
+      "cd /root/ErpiBig",
+      "git checkout main",
+      "git pull",
+      "sh deploy/install.sh"
+    ]
+  },
+  "versions": [
+    {
+      "version": "1.1.0",
+      "date": "2026-11-02",
+      "type": "minor",
+      "changes": [
+        "Новое: кабинет абонента из BGBilling — баланс по месяцам и текущий баланс, платежи, расходы, наработка, тарифы, абонплаты NPay, история статусов, сессии сейчас и за период; итоги и выгрузка в CSV",
+        "Новое: карточка абонента вкладками — Обзор, Финансы, Договор, Сессии, Диагностика, Заявки и звонки, «Все сразу»",
+        "Новое: доп. действия и свои скрипты (перезагрузка ONU и т.п.) — файл /etc/erpibig/actions.toml, программа на сервере ERP или внешний сервис, подстановка IP/OLT/PON-порта/ONU, таймаут, аудит",
+        "Новое: подсветка вывода диагностики — быстрый фильтр (выделить красным, только строки с совпадениями), общие и личные правила в меню «Подсветка»",
+        "Новое: права erp.bg.finance, erp.bg.contract, erp.bg.sessions, erp.diag.highlights_manage; все тесты одной командой scripts/test.sh"
+      ],
+      "changes_en": [
+        "New: subscriber cabinet from BGBilling — monthly balance and current balance, payments, charges, accruals, tariffs, NPay fees, status history, current and past sessions; totals and CSV export",
+        "New: subscriber card with tabs — Overview, Finance, Contract, Sessions, Diagnostics, Tickets and calls, \"All at once\"",
+        "New: extra actions and custom scripts (ONU reboot etc.) — /etc/erpibig/actions.toml, a program on the ERP server or an external service, IP/OLT/PON port/ONU substitution, timeout, audit",
+        "New: diagnostics output highlighting — quick filter (mark red, matching lines only), shared and personal rules in the \"Highlighting\" menu",
+        "New: permissions erp.bg.finance, erp.bg.contract, erp.bg.sessions, erp.diag.highlights_manage; all tests with one command scripts/test.sh"
+      ],
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0"
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-10-31",
+      "type": "patch",
+      "changes": [
+        "Новое: установка одной командой — sh deploy/install.sh адрес (HTTPS сразу, первый администратор), инструкция для Debian 13",
+        "Исправлено: служба не стартовала из-за комментариев в erpibig.env; nginx на Debian 12/Ubuntu 24.04; блокировка фоновых задач в /tmp; проверка Let's Encrypt"
+      ],
+      "changes_en": [
+        "New: one-command install — sh deploy/install.sh address (HTTPS right away, first administrator), Debian 13 guide",
+        "Fixed: service did not start due to comments in erpibig.env; nginx on Debian 12/Ubuntu 24.04; background job lock in /tmp; Let's Encrypt challenge"
+      ],
+      "breaking": false,
+      "security": false
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-10-28",
+      "type": "initial",
+      "changes": [
+        "Первый релиз: вход и роли, единый вход для NetMap, BGBilling 10 (только чтение) — поиск и карточка абонента, диагностика ONU; софтфон FreePBX; заявки и наряды; аварии из Zabbix, NetMap и своей проверки; склад; уведомления Telegram/WhatsApp/браузер; отчёты"
+      ],
+      "changes_en": [
+        "Initial release: login and roles, single sign-on for NetMap, BGBilling 10 (read-only) — subscriber search and card, ONU diagnostics; FreePBX softphone; tickets and work orders; incidents from Zabbix, NetMap and own checks; warehouse; Telegram/WhatsApp/browser notifications; reports"
+      ]
+    }
+  ]
+}

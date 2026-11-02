@@ -131,7 +131,8 @@ python3 -m unittest discover -s tests -v
 
 | Проект | Последняя версия | Репозиторий |
 |---|---|---|
-| [netmap](netmap.json) — карта сети | 1.6.0 | https://github.com/lumenods/NetMap |
+| [netmap](netmap.json) — карта сети | 1.10.0 | https://github.com/lumenods/NetMap |
+| [erpibig](erpibig.json) — ERP/CRM провайдера | 1.1.0 | https://github.com/lumenods/erpibig |
 
 ## Лицензия
 
