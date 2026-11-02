@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.1.0",
+  "latest": "1.2.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,22 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.2.0",
+      "date": "2026-11-02",
+      "type": "minor",
+      "changes": [
+        "Новое: доп. действия BGBilling (диагностика, перезагрузка ONU и др.) запускаются из ERP через веб-сервис BGBilling — раздел [api] в bgbilling.toml",
+        "Новое: команда bg-api-check — проверить связь с API BGBilling и список доп. действий устройства"
+      ],
+      "changes_en": [
+        "New: BGBilling extra actions (diagnostics, ONU reboot, etc.) run from ERP via the BGBilling web service — [api] section in bgbilling.toml",
+        "New: bg-api-check command — check the BGBilling API connection and the device's extra actions"
+      ],
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.1.0",
       "date": "2026-11-02",
