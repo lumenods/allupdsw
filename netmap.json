@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.10.0",
+  "latest": "1.10.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,18 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.10.1",
+      "date": "2026-11-02",
+      "type": "patch",
+      "changes": [
+        "Новое: руководство пользователя со снимками экрана — в справке и в PDF (кнопка «Скачать PDF»)",
+        "Новое: учёт адресов в тестовом проекте",
+        "Исправлено: пустой переключатель проекта на телефоне"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.10.0",
       "date": "2026-11-02",
