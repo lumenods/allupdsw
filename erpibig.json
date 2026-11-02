@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.2.0",
+  "latest": "1.2.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,21 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.2.1",
+      "date": "2026-11-02",
+      "type": "patch",
+      "changes": [
+        "Исправлено: страница «Пользователи» не открывалась",
+        "Новое: подробное руководство со скриншотами — docs/ErpiBig-manual.pdf и docs/manual.html"
+      ],
+      "changes_en": [
+        "Fixed: the Users page did not open",
+        "New: detailed manual with screenshots — docs/ErpiBig-manual.pdf and docs/manual.html"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.2.0",
       "date": "2026-11-02",
