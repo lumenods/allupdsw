@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.2.2",
+  "latest": "1.3.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,30 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.3.0",
+      "date": "2026-11-02",
+      "type": "minor",
+      "changes": [
+        "Новое: процессы — схемы из блоков в визуальном редакторе (создана/закрыта задача → условия → задачи на отделы, оповещения, метки), ожидание задачи и ветвление по результату, журнал запусков",
+        "Новое: отделы, руководители отделов и отметка «на смене»; задачи отдела и оповещения — тем, кто на смене",
+        "Новое: виды задач настраиваются — сроки выполнения и взятия в работу, шаблоны закрытия, причины приостановки с подзадачами, техработы по адресу",
+        "Новое: статусы «Не выполнено», «Приостановлена» с причиной, «Перенести» на дату, метки, связанные задачи и подзадачи",
+        "Новое: отчёты для руководства по отделам, исполнителям, видам задач, причинам, меткам, процессам; CSV",
+        "Новое: «Загрузить пример» — отделы, виды задач и процессы по образцу; подробное руководство «что и зачем»"
+      ],
+      "changes_en": [
+        "New: processes — block diagrams in a visual editor (task created/closed → conditions → tasks for departments, notifications, markers), waiting for a task and branching by result, run log",
+        "New: departments, department leads and on-shift check-in; department tasks and notifications go to people on shift",
+        "New: configurable task types — due and take-in-work deadlines, closing templates, pause reasons with subtasks, works-in-progress by address",
+        "New: statuses Not done, Paused with reason, Reschedule to a date, markers, related tasks and subtasks",
+        "New: management reports by department, executor, task type, reasons, markers, processes; CSV",
+        "New: Load example — departments, task types and processes; detailed manual with what and why"
+      ],
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.2.2",
       "date": "2026-11-02",
