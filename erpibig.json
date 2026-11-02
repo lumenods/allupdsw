@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.2.1",
+  "latest": "1.2.2",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.2.2",
+      "date": "2026-11-02",
+      "type": "patch",
+      "changes": [
+        "Исправлено: путь веб-сервиса доп. действий сверен с документацией BGBilling 10 (ru.bitel.bgbilling.modules.inet/<модуль>/InetDeviceService)",
+        "Новое: bg-api-check сам подбирает рабочий путь сервиса; авторизация также заголовком Basic",
+        "Изменено: руководство (PDF) — протокол вызова BGBilling, проверка curl, неполадки"
+      ],
+      "changes_en": [
+        "Fixed: extra actions web service path matched to the BGBilling 10 documentation (ru.bitel.bgbilling.modules.inet/<module>/InetDeviceService)",
+        "New: bg-api-check finds a working service path itself; Basic auth header added",
+        "Changed: manual (PDF) — BGBilling call protocol, curl check, troubleshooting"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.2.1",
       "date": "2026-11-02",
