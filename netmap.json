@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.13.0",
+  "latest": "1.14.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.14.0",
+      "date": "2026-11-03",
+      "type": "minor",
+      "changes": [
+        "Новое: импорт карты из Google Мои карты и Google Earth (KMZ, KML)",
+        "Новое: сопоставление папок Google с видами объектов, марками кабелей, слоями и зонами; варианты по названиям",
+        "Новое: линии притягиваются к муфтам и опорам — точки крепления, начало и конец кабеля",
+        "Новое: повторный импорт без дублей, проверка прав по каждому объекту"
+      ],
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.13.0",
       "date": "2026-11-02",
