@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.4.1",
+  "latest": "1.4.2",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.4.2",
+      "date": "2026-11-04",
+      "type": "patch",
+      "changes": [
+        "Новое: переименование пользователей (логин, ФИО, почта) без потери связей",
+        "Новое: тесты миграций базы (SQLite и PostgreSQL, обновление с прошлых версий), браузерные тесты, замер покрытия (~90%), нагрузочный тест scripts/load_test.py",
+        "Новое: автоматическая проверка всех тестов на GitHub при каждом изменении"
+      ],
+      "changes_en": [
+        "New: renaming users (login, full name, email) without losing links",
+        "New: database migration tests (SQLite and PostgreSQL, upgrade from previous versions), browser tests, coverage measurement (~90%), load test scripts/load_test.py",
+        "New: automatic run of all tests on GitHub for every change"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.4.1",
       "date": "2026-11-04",
