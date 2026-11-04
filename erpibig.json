@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.4.0",
+  "latest": "1.4.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,19 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.4.1",
+      "date": "2026-11-04",
+      "type": "patch",
+      "changes": [
+        "Исправлено: в примере процессов отдел «СИ» заменён на «СА — системный администратор»; повторная загрузка примера переносит задачи, виды задач, процессы и сотрудников из «СИ» в «СА»"
+      ],
+      "changes_en": [
+        "Fixed: in the process example the «СИ» department is replaced with «СА — system administrator»; reloading the example moves tasks, task types, processes and members from «СИ» to «СА»"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.4.0",
       "date": "2026-11-03",
