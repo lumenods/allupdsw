@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.4.2",
+  "latest": "1.5.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,25 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.5.0",
+      "date": "2026-11-05",
+      "type": "minor",
+      "changes": [
+        "Новое: весь интерфейс на английском — экраны, формы, отчёты, редактор процессов, мобильный вид, телефон",
+        "Новое: ответы и ошибки сервера на английском при выборе EN; уведомления — на языке получателя",
+        "Новое: язык по умолчанию ERP_DEFAULT_LANG (ru/en)",
+        "Исправлено: язык, выбранный на странице входа, больше не сбрасывается после входа"
+      ],
+      "changes_en": [
+        "New: the whole interface in English — screens, forms, reports, process editor, mobile view, phone",
+        "New: server responses and errors in English when EN is selected; notifications in the recipient's language",
+        "New: default language ERP_DEFAULT_LANG (ru/en)",
+        "Fixed: the language chosen on the sign-in page is no longer reset after signing in"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.4.2",
       "date": "2026-11-04",
