@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/lumenods/allupdsw/main/schema/access-manifest.schema.json",
+  "title": "Манифест прав доступа проекта (GET /api/v1/access/manifest)",
+  "type": "object",
+  "required": ["manifest_version", "project", "version", "title", "summary", "permissions", "roles"],
+  "additionalProperties": false,
+  "$defs": {
+    "i18n": {
+      "type": "object",
+      "required": ["ru"],
+      "additionalProperties": false,
+      "properties": { "ru": { "type": "string", "minLength": 1 }, "en": { "type": "string", "minLength": 1 } }
+    },
+    "code": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "perm": { "type": "string", "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$" }
+  },
+  "properties": {
+    "$schema": { "type": "string" },
+    "manifest_version": { "type": "string", "pattern": "^1\\.\\d+$", "description": "Версия формата манифеста" },
+    "project": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$", "description": "Имя проекта как в allupdsw" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "Версия проекта" },
+    "title": { "$ref": "#/$defs/i18n" },
+    "summary": { "$ref": "#/$defs/i18n", "description": "Кратко: что даёт доступ к проекту" },
+    "auth": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sso": { "enum": ["oidc", "saml", "none"] },
+        "local_users": { "type": "boolean", "description": "Разрешены ли локальные пользователи помимо центра авторизации" },
+        "groups_claim": { "type": "string", "description": "Claim токена с группами центра авторизации" },
+        "roles_claim": { "type": "string" },
+        "scim": { "type": "boolean", "description": "Поддерживается SCIM 2.0 (/scim/v2)" }
+      }
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "name"],
+        "additionalProperties": false,
+        "properties": { "code": { "$ref": "#/$defs/code" }, "name": { "$ref": "#/$defs/i18n" }, "description": { "$ref": "#/$defs/i18n" } }
+      }
+    },
+    "scopes": {
+      "type": "array",
+      "description": "Измерения ограничения прав (регион, отдел, проект...)",
+      "items": {
+        "type": "object",
+        "required": ["code", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "code": { "$ref": "#/$defs/code" },
+          "name": { "$ref": "#/$defs/i18n" },
+          "description": { "$ref": "#/$defs/i18n" },
+          "values_endpoint": { "type": "string", "description": "API со списком значений" }
+        }
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["code", "name", "risk"],
+        "additionalProperties": false,
+        "properties": {
+          "code": { "$ref": "#/$defs/perm", "description": "Неизменяемый код права <проект>.<модуль>.<действие>" },
+          "module": { "$ref": "#/$defs/code" },
+          "name": { "$ref": "#/$defs/i18n" },
+          "description": { "$ref": "#/$defs/i18n" },
+          "risk": { "enum": ["low", "medium", "high", "critical"], "description": "Насколько опасно выдавать" },
+          "requires": { "type": "array", "items": { "$ref": "#/$defs/perm" }, "description": "Без этих прав не работает" },
+          "conflicts": { "type": "array", "items": { "$ref": "#/$defs/perm" }, "description": "Нельзя совмещать (разделение обязанностей)" },
+          "scopable": { "type": "array", "items": { "$ref": "#/$defs/code" }, "description": "Какими scope можно ограничить" },
+          "deprecated": { "type": "boolean" }
+        }
+      }
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["code", "name", "permissions"],
+        "additionalProperties": false,
+        "properties": {
+          "code": { "$ref": "#/$defs/code" },
+          "name": { "$ref": "#/$defs/i18n" },
+          "description": { "$ref": "#/$defs/i18n" },
+          "permissions": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)*(\\.\\*)?$" },
+            "description": "Коды прав; допускается маска с .* на конце"
+          },
+          "system": { "type": "boolean", "description": "Встроенная роль (нельзя удалить)" },
+          "editable": { "type": "boolean", "description": "Можно ли менять набор прав" },
+          "default": { "type": "boolean", "description": "Выдаётся новым пользователям" }
+        }
+      }
+    },
+    "endpoints": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Если пути отличаются от стандартных /api/v1/access/..."
+    }
+  }
+}

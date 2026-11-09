@@ -1,0 +1,81 @@
+{
+  "$schema": "../schema/access-manifest.schema.json",
+  "manifest_version": "1.0",
+  "project": "project-name",
+  "version": "1.0.0",
+  "title": { "ru": "Пример проекта", "en": "Example project" },
+  "summary": {
+    "ru": "Учёт заявок: просмотр и создание заявок, назначение исполнителей, отчёты. Финансовые отчёты выдаются отдельно.",
+    "en": "Ticket tracking: view and create tickets, assign executors, reports. Financial reports are granted separately."
+  },
+  "auth": { "sso": "oidc", "local_users": true, "groups_claim": "groups", "scim": false },
+  "modules": [
+    { "code": "tickets", "name": { "ru": "Заявки", "en": "Tickets" } },
+    { "code": "reports", "name": { "ru": "Отчёты", "en": "Reports" } },
+    { "code": "admin", "name": { "ru": "Администрирование", "en": "Administration" } }
+  ],
+  "scopes": [
+    {
+      "code": "region",
+      "name": { "ru": "Регион", "en": "Region" },
+      "description": { "ru": "Ограничение доступа данными одного или нескольких регионов", "en": "Limit access to data of selected regions" },
+      "values_endpoint": "/api/v1/access/scopes/region"
+    }
+  ],
+  "permissions": [
+    {
+      "code": "app.tickets.view", "module": "tickets", "risk": "low", "scopable": ["region"],
+      "name": { "ru": "Просмотр заявок", "en": "View tickets" },
+      "description": { "ru": "Список и карточки заявок", "en": "Ticket list and cards" }
+    },
+    {
+      "code": "app.tickets.edit", "module": "tickets", "risk": "medium", "requires": ["app.tickets.view"], "scopable": ["region"],
+      "name": { "ru": "Создание и изменение заявок", "en": "Create and edit tickets" }
+    },
+    {
+      "code": "app.tickets.approve", "module": "tickets", "risk": "high", "requires": ["app.tickets.view"],
+      "conflicts": ["app.tickets.edit"],
+      "name": { "ru": "Утверждение заявок", "en": "Approve tickets" },
+      "description": { "ru": "Нельзя совмещать с изменением: кто создаёт, тот не утверждает", "en": "Separated from editing: author cannot approve" }
+    },
+    {
+      "code": "app.reports.finance", "module": "reports", "risk": "high", "requires": ["app.tickets.view"],
+      "name": { "ru": "Финансовые отчёты", "en": "Financial reports" },
+      "description": { "ru": "Суммы, оплаты и задолженности по заявкам", "en": "Amounts, payments and debts on tickets" }
+    },
+    {
+      "code": "app.admin.access", "module": "admin", "risk": "critical",
+      "name": { "ru": "Управление ролями и правами", "en": "Manage roles and permissions" },
+      "description": { "ru": "Создание и изменение ролей, групп, сопоставлений с центром авторизации", "en": "Create and edit roles, groups and auth center mappings" }
+    },
+    {
+      "code": "app.admin.debug", "module": "admin", "risk": "critical",
+      "name": { "ru": "Режим отладки и диагностика", "en": "Debug mode and diagnostics" },
+      "description": { "ru": "Включение debug, страница диагностики, выгрузка отчёта для отладки", "en": "Enable debug, diagnostics page, debug report download" }
+    }
+  ],
+  "roles": [
+    {
+      "code": "viewer", "default": true, "system": true, "editable": true,
+      "name": { "ru": "Наблюдатель", "en": "Viewer" },
+      "description": { "ru": "Только просмотр заявок", "en": "View tickets only" },
+      "permissions": ["app.tickets.view"]
+    },
+    {
+      "code": "operator", "system": true, "editable": true,
+      "name": { "ru": "Оператор", "en": "Operator" },
+      "permissions": ["app.tickets.view", "app.tickets.edit"]
+    },
+    {
+      "code": "supervisor", "system": true, "editable": true,
+      "name": { "ru": "Руководитель", "en": "Supervisor" },
+      "permissions": ["app.tickets.view", "app.tickets.approve", "app.reports.*"]
+    },
+    {
+      "code": "admin", "system": true, "editable": false,
+      "name": { "ru": "Администратор", "en": "Administrator" },
+      "description": { "ru": "Управление доступом и диагностика", "en": "Access management and diagnostics" },
+      "permissions": ["app.admin.*", "app.tickets.view"]
+    }
+  ]
+}

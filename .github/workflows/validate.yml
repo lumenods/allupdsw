@@ -11,4 +11,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/validate.py
+      - run: python3 tools/access_manifest.py check examples/access-manifest.example.json
       - run: python3 -m unittest discover -s tests -v
