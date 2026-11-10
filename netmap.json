@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.17.0",
+  "latest": "1.18.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,22 @@
     ]
   },
   "versions": [
+    {
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0",
+      "version": "1.18.0",
+      "date": "2026-11-10",
+      "type": "minor",
+      "changes": [
+        "Новое: массовые аварии — погас PON-порт, все абоненты за муфтой, OLT или коммутатор; массовое ухудшение сигнала",
+        "Новое: общая заявка в ERP на всех абонентов с типом аварии и зоной ответственности; исполнителя назначает ERP",
+        "Новое: Telegram через ERP (готовый текст в событии) или ботом NetMap",
+        "Новое: зоны ответственности передаются в ERP (zone.upserted / zone.deleted, GET /api/integration/v1/zones)",
+        "Новое: реакция на аварии у муфты, порта PON, OLT; опрос ONU по интервалу и по запросу ERP",
+        "Новое: оповещения для браузера операторов ERP; проверка, в аварии ли абонент, по договору"
+      ]
+    },
     {
       "version": "1.17.0",
       "date": "2026-11-05",
