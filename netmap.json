@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.18.0",
+  "latest": "1.19.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,19 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.19.0",
+      "date": "2026-11-10",
+      "type": "minor",
+      "changes": [
+        "Новое: синхронизация из ERP — монтажники и история работ по авариям (адрес и сервисный токен ERP в подключении ERP)",
+        "Новое: история работ в карточке муфты — заявки ERP, кто выезжал, результат, время устранения; предупреждение о повторных авариях",
+        "Новое: кнопка «Синхронизировать с ERP» и список монтажников ERP в Администрировании → Массовые аварии"
+      ],
+      "breaking": false,
+      "security": false,
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "breaking": false,
       "security": false,

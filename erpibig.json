@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.5.0",
+  "latest": "1.6.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,27 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.6.0",
+      "date": "2026-11-10",
+      "type": "minor",
+      "changes": [
+        "Новое: массовые аварии NetMap — одна общая заявка на всех абонентов, монтажник по зоне ответственности, Telegram, ответ в NetMap",
+        "Новое: зоны ответственности из NetMap (создаются автоматически), ответственные задаются в ERP — меню «Зоны»",
+        "Новое: повторные аварии на муфте, порту, OLT — срочно, связь с прошлой заявкой, подсветка",
+        "Новое: отчёт по авариям NetMap (зоны, типы, повторные) и история объекта",
+        "Новое: API для NetMap — монтажники и история работ"
+      ],
+      "changes_en": [
+        "New: NetMap mass outages — one shared ticket for all subscribers, installer by zone of responsibility, Telegram, reply to NetMap",
+        "New: zones of responsibility from NetMap (created automatically), responsible staff are set in ERP — the “Zones” menu",
+        "New: repeated outages on a closure, port or OLT — urgent, linked to the previous ticket, highlighted",
+        "New: NetMap outage report (zones, types, repeats) and object history",
+        "New: API for NetMap — installers and work history"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.5.0",
       "date": "2026-11-05",
