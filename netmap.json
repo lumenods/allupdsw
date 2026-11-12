@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.24.0",
+  "latest": "1.25.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,26 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.25.0",
+      "date": "2026-11-12",
+      "type": "minor",
+      "changes": [
+        "Новое: считать платы с OLT ZTE по SNMP и сверить с комплектацией в NetMap",
+        "Исправлено: вход не открывал карту, если в браузере запомнен проект без доступа",
+        "Исправлено: IPAM при правах только в проекте или слое — пункт меню вёл на страницу с ошибкой",
+        "Исправлено: в Docker nginx отдавал страницы без Content-Security-Policy и защитных заголовков",
+        "Исправлено: выдача прав на зону или слой — видны все проекты, проект указан в названии"
+      ],
+      "changes_en": [
+        "New: read ZTE OLT cards over SNMP and compare with the configured chassis",
+        "Fixed: sign-in did not open the map when the browser remembered a project the user can no longer access",
+        "Fixed: IPAM for users with project- or layer-only rights led to an error page",
+        "Fixed: Docker nginx served pages without Content-Security-Policy and security headers",
+        "Fixed: zone/layer grants list all projects and show the project name"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.24.0",
       "date": "2026-11-12",
