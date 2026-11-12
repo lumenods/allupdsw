@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.23.0",
+  "latest": "1.23.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.23.1",
+      "date": "2026-11-12",
+      "type": "patch",
+      "changes": [
+        "Исправлено: окно пользователя — поля пароля рядом, Telegram ID отдельной строкой",
+        "Исправлено: окно проекта — раздел доступа свёрнут и пояснён («Кто работает в этом проекте»)"
+      ],
+      "changes_en": [
+        "Fixed: user dialog — password fields side by side, Telegram ID on its own row",
+        "Fixed: project dialog — access section collapsed and explained (\"Who works in this project\")"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.23.0",
       "date": "2026-11-12",
