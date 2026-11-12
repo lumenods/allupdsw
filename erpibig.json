@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.7.1",
+  "latest": "1.7.2",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,25 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.7.2",
+      "date": "2026-11-12",
+      "type": "patch",
+      "changes": [
+        "Исправлено: на PostgreSQL не работала форма склада «Выдать / принять / списать» (не открывался список сотрудников)",
+        "Исправлено: слишком длинный номер в адресе или поле давал «Внутреннюю ошибку» — теперь понятный отказ",
+        "Исправлено: страница «API» на телефоне выходила за экран; в переносе заявки нельзя выбрать дату дальше полугода",
+        "Проверки: все формы с ошибками и правильно, «мусор» во все методы API, обход интерфейса под каждой ролью, всё — и на PostgreSQL"
+      ],
+      "changes_en": [
+        "Fixed: on PostgreSQL the warehouse “Issue / receive / write off” form did not work (staff list failed to load)",
+        "Fixed: an overly long number in a URL or field caused an internal error — now a clear rejection",
+        "Fixed: the API page overflowed the screen on phones; rescheduling no longer offers dates beyond six months",
+        "Checks: every form with wrong and correct data, garbage input to every API method, full UI crawl for every role, all on PostgreSQL too"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.7.1",
       "date": "2026-11-12",
