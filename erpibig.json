@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.7.0",
+  "latest": "1.7.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.7.1",
+      "date": "2026-11-12",
+      "type": "patch",
+      "changes": [
+        "Новое: подробная инструкция по установке без Docker — последняя или конкретная версия, обновление, откат, резервные копии",
+        "Новое: перед обновлением установщик сам сохраняет копию базы и не даёт поставить версию старше установленной",
+        "Новое: ночные резервные копии deploy/backup.sh; метки версий и релизы на GitHub ставятся автоматически"
+      ],
+      "changes_en": [
+        "New: detailed installation guide without Docker — latest or specific version, update, rollback, backups",
+        "New: before updating, the installer saves a database copy and refuses to install a version older than the installed one",
+        "New: nightly backups with deploy/backup.sh; version tags and GitHub releases are created automatically"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.7.0",
       "date": "2026-11-12",
