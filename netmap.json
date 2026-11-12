@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.22.0",
+  "latest": "1.23.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,26 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.23.0",
+      "date": "2026-11-12",
+      "type": "minor",
+      "changes": [
+        "Новое: подключение к единому центру авторизации aCentraLe одноразовым кодом («Администрирование → Центр авторизации»); подпись ключом NetMap вместо общего пароля",
+        "Новое: должности центра (/Должности/…) включают роли NetMap; их можно задавать и из веб-интерфейса центра (API /api/v1/access/mappings)",
+        "Новое: выход и «завершить сеансы» в центре сразу завершают сессии NetMap; смена ключа без перерыва во входе",
+        "Новое: манифест прав GET /api/v1/access/manifest",
+        "Исправлено: администрирование на телефоне больше не прокручивается вбок"
+      ],
+      "changes_en": [
+        "New: connect to the aCentraLe single sign-on center with a one-time code (Administration → Auth center); NetMap signs with its own key instead of a shared secret",
+        "New: auth center positions (/Positions/…) grant NetMap roles; they can also be set from the center web UI (API /api/v1/access/mappings)",
+        "New: signing out or ending sessions in the center ends NetMap sessions at once; key rotation without sign-in interruption",
+        "New: permission manifest GET /api/v1/access/manifest",
+        "Fixed: administration no longer scrolls sideways on phones"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.22.0",
       "date": "2026-11-12",

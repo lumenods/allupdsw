@@ -1,0 +1,38 @@
+{
+  "$schema": "./schema/project.schema.json",
+  "project": "authcentrale",
+  "title": "aCentraLe — единый центр авторизации",
+  "title_en": "aCentraLe — single sign-on center",
+  "repository": "https://github.com/lumenods/authcentrale",
+  "latest": "1.0.0",
+  "update_commands": {
+    "linux": [
+      "su -",
+      "cd /opt/authcentrale-src",
+      "git checkout main",
+      "git pull",
+      "sh deploy/install.sh"
+    ]
+  },
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-11-12",
+      "type": "initial",
+      "changes": [
+        "Первый выпуск: единый вход для всех систем на Keycloak 26 (установщик для Debian/Ubuntu без Docker)",
+        "Подключение проектов одноразовым кодом, подпись ключом проекта, выход по сигналу центра (Back-Channel Logout)",
+        "Веб-интерфейс администратора /center/: сотрудники, должности, права «должность × проект → роли», итоговые права, проекты, журнал",
+        "Проверка обновлений через allupdsw, «О программе» с версией, сборкой и «Что нового»"
+      ],
+      "changes_en": [
+        "First release: single sign-on for all systems on Keycloak 26 (installer for Debian/Ubuntu without Docker)",
+        "Projects connect with a one-time code, sign with their own key, sign-out signal from the center (Back-Channel Logout)",
+        "Administrator web UI /center/: staff, positions, “position × project → roles” permissions, effective permissions, projects, journal",
+        "Update check via allupdsw, About dialog with version, build and what's new"
+      ],
+      "breaking": false,
+      "security": false
+    }
+  ]
+}

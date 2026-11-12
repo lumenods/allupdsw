@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.6.1",
+  "latest": "1.7.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.7.0",
+      "date": "2026-11-12",
+      "type": "minor",
+      "changes": [
+        "Новое: вход через единый центр авторизации aCentraLe («Войти через aCentraLe»); подключение одноразовым кодом в «Пользователи → Центр авторизации»",
+        "Новое: сопоставления «группа центра → роли ERP», пересчёт ролей при входе и раз в 10 минут; роли, выданные в ERP напрямую, сохраняются",
+        "Новое: выход в центре сразу завершает сессию ERP, выход из ERP — и из центра; запасной вход по паролю — только администраторам",
+        "Новое: манифест прав и API сопоставлений для центра (/api/v1/access/manifest, /api/v1/access/mappings)"
+      ],
+      "changes_en": [
+        "New: sign in with the aCentraLe single sign-on center (“Sign in with aCentraLe”); connect with a one-time code in Users → Auth center",
+        "New: “auth center group → ERP roles” mappings, roles recalculated at sign-in and every 10 minutes; roles granted directly in ERP are kept",
+        "New: signing out in the center ends the ERP session at once, signing out of ERP signs out of the center; password fallback sign-in for administrators only",
+        "New: permission manifest and mappings API for the center (/api/v1/access/manifest, /api/v1/access/mappings)"
+      ]
+    },
     {
       "version": "1.6.1",
       "date": "2026-11-12",
