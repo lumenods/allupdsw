@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.6.0",
+  "latest": "1.6.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,21 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.6.1",
+      "date": "2026-11-12",
+      "type": "patch",
+      "changes": [
+        "Исправлено: неверное событие NetMap — отказ 4xx вместо ошибки сервера (NetMap не повторяет его без конца)",
+        "Исправлено: одно событие аварии дважды одновременно — одна авария и одна заявка",
+        "Исправлено: история работ для NetMap учитывает изменения заявки (назначение, закрытие с результатом)"
+      ],
+      "changes_en": [
+        "Fixed: a malformed NetMap event is rejected with 4xx instead of a server error (NetMap no longer retries it forever)",
+        "Fixed: the same outage event delivered twice at once creates one incident and one ticket",
+        "Fixed: work history for NetMap includes ticket changes (assignment, closing with a result)"
+      ]
+    },
     {
       "version": "1.6.0",
       "date": "2026-11-10",
