@@ -1,0 +1,20 @@
+{
+  "url": "http://localhost:8080",
+  "out": "crawl-report",
+  "lang": "ru",
+  "login": {
+    "url": "/login",
+    "userSelector": "input[name=username]",
+    "passSelector": "input[type=password]",
+    "submitSelector": "button[type=submit]",
+    "successSelector": "nav .version"
+  },
+  "forms": "full",
+  "bruteforce": 10,
+  "exclude": "/api/v1/export",
+  "public": "/(help|about)$",
+  "versionRegex": "\\bv\\d+\\.\\d+\\.\\d+\\b",
+  "failOn": "high",
+  "maxPages": 300,
+  "delay": 0
+}

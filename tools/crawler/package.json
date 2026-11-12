@@ -1,0 +1,17 @@
+{
+  "name": "allupdsw-crawler",
+  "version": "1.0.0",
+  "description": "Краулер проверки проектов: функциональность, формы, безопасность, мобильная версия",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "bin": { "allupdsw-crawl": "crawl.mjs" },
+  "scripts": {
+    "crawl": "node crawl.mjs",
+    "test": "node --test --test-concurrency=1 test/*.test.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

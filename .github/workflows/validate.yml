@@ -13,3 +13,16 @@ jobs:
       - run: python3 tools/validate.py
       - run: python3 tools/access_manifest.py check examples/access-manifest.example.json
       - run: python3 -m unittest discover -s tests -v
+  crawler:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/crawler
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
