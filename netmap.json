@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.23.1",
+  "latest": "1.24.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,22 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.24.0",
+      "date": "2026-11-12",
+      "type": "minor",
+      "changes": [
+        "Новое: GPON OLT — шасси со слотами и комплектация платами; порты платы появляются у OLT с адресом стойка/слот/порт, при замене платы подключения сохраняются",
+        "Новое: раздел «Администрирование → GPON OLT: шасси и платы» — раскладка слотов, комплектация по умолчанию, справочник плат",
+        "Новое: шасси ZTE C300, C320, C600, C650, C620 и более 110 плат ZTE"
+      ],
+      "changes_en": [
+        "New: GPON OLT chassis with slots and line cards; card ports appear on the OLT as rack/slot/port, connections are kept when a card is replaced",
+        "New: Administration → GPON OLT: chassis slot layout, default cards, card catalog",
+        "New: ZTE C300, C320, C600, C650, C620 chassis and 110+ ZTE cards"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.23.1",
       "date": "2026-11-12",
