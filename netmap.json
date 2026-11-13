@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.26.1",
+  "latest": "1.27.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,22 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.27.0",
+      "date": "2026-11-13",
+      "type": "minor",
+      "changes": [
+        "Новое: окно «Оборудование» — всё установленное оборудование, мониторинг, IP, инвентарь, переход в карточку",
+        "Новое: связь оборудования с IPAM — адреса из учёта, пометка «нет в IPAM» и занесение одной кнопкой",
+        "Изменено: администрирование — раздел «Оборудование: модели и платы» (модели, платы OLT, объекты на карте)"
+      ],
+      "changes_en": [
+        "New: Equipment window — all installed equipment, monitoring, IPs, inventory, jump to the card",
+        "New: equipment linked with IPAM — addresses from IPAM, \"not in IPAM\" mark and one-click add",
+        "Changed: administration — single \"Equipment: models and cards\" section (models, OLT cards, map objects)"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.26.1",
       "date": "2026-11-13",
