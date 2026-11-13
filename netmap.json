@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.25.0",
+  "latest": "1.26.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,22 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.26.0",
+      "date": "2026-11-13",
+      "type": "minor",
+      "changes": [
+        "Новое: OLT на карте как «Коммутатор» и «Видеокамера» — модель и IP при установке, платы ставятся сразу",
+        "Новое: пиктограммы OLT и ONU",
+        "Новое: «＋ Новый вид» в окне «Активное оборудование» — свой вид без правки справочников"
+      ],
+      "changes_en": [
+        "New: OLT as a map point like switch and camera — model and IP on placement, cards installed at once",
+        "New: OLT and ONU pictograms",
+        "New: \"+ New kind\" in the active equipment chooser — add your own kind without editing catalogs"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.25.0",
       "date": "2026-11-12",
