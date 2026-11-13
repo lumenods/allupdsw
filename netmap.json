@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.26.0",
+  "latest": "1.26.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,18 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.26.1",
+      "date": "2026-11-13",
+      "type": "patch",
+      "changes": [
+        "Исправлено: группа категории в меню слоёв — выбор из списка, новая группа или «нет»"
+      ],
+      "changes_en": [
+        "Fixed: category layer-menu group is picked from a list, with \"new group\" and \"none\""
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.26.0",
       "date": "2026-11-13",
