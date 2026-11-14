@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.27.0",
+  "latest": "1.27.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,24 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.27.1",
+      "date": "2026-11-14",
+      "type": "patch",
+      "changes": [
+        "Безопасность: Pillow 13.0.0 (40+ CVE разбора изображений), фото — только JPEG/PNG/WebP/GIF",
+        "Безопасность: MapLibre GL JS 6.18.0 (CVE-2026-85061, XSS через авторство карты), очистка авторства подложки",
+        "Безопасность: PyJWT 2.15.1, aiomysql 0.3.2 (CVE-2025-62611), nginx 1.30 в Docker",
+        "Исправлено: администрирование — запоздавшая перерисовка могла показать прежнюю вкладку"
+      ],
+      "changes_en": [
+        "Security: Pillow 13.0.0 (40+ image parsing CVEs), photos limited to JPEG/PNG/WebP/GIF",
+        "Security: MapLibre GL JS 6.18.0 (CVE-2026-85061, XSS via map attribution), basemap attribution sanitized",
+        "Security: PyJWT 2.15.1, aiomysql 0.3.2 (CVE-2025-62611), nginx 1.30 in Docker",
+        "Fixed: administration — a late re-render could show the previous tab"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.27.0",
       "date": "2026-11-13",
