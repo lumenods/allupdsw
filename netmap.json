@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.27.1",
+  "latest": "1.27.2",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,22 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.27.2",
+      "date": "2026-11-15",
+      "type": "patch",
+      "changes": [
+        "Исправлено: после 1.27.1 на серверах с nginx не открывались карта и меню (nginx отдавал файлы карты .mjs как text/plain)",
+        "Исправлено: стиль и библиотека карты загружаются с версией в адресе — без смешения со старым кэшем браузера",
+        "Исправлено: nginx отдаёт manifest.webmanifest с правильным типом"
+      ],
+      "changes_en": [
+        "Fixed: after 1.27.1 the map and menus did not load behind nginx (map files .mjs served as text/plain)",
+        "Fixed: map library and style URLs carry the version — no mixing with the old browser cache",
+        "Fixed: nginx serves manifest.webmanifest with the correct type"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.27.1",
       "date": "2026-11-14",
