@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.3",
+  "latest": "1.28.4",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,18 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.4",
+      "date": "2026-11-16",
+      "type": "patch",
+      "changes": [
+        "Изменено: импорт Visio — сообщение о точках привязки, загруженных с прошлого раза, с датой"
+      ],
+      "changes_en": [
+        "Changed: Visio import — notice about georeferencing points restored from last time, with date"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.3",
       "date": "2026-11-16",
