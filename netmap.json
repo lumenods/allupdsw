@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.6",
+  "latest": "1.28.7",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,18 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.7",
+      "date": "2026-11-16",
+      "type": "patch",
+      "changes": [
+        "Импорт Visio: окно привязки больше не закрывается от клика по карте мимо окна; после третьей точки — подсказка вместо показа схемы за окном; при закрытии окна схема убирается с карты."
+      ],
+      "changes_en": [
+        "Visio import: the georeferencing dialog no longer closes on a click outside it; after the third point a hint is shown instead of drawing the schema behind the dialog; closing the dialog removes the schema from the map."
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.6",
       "date": "2026-11-16",
