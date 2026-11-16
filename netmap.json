@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.1",
+  "latest": "1.28.2",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,18 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.2",
+      "date": "2026-11-16",
+      "type": "patch",
+      "changes": [
+        "Исправлено: импорт Visio — подложка внутри групп рисовалась не на месте, и привязка по ней смещала схему"
+      ],
+      "changes_en": [
+        "Fixed: Visio import — grouped background images were misplaced, so points picked on them shifted the schema"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.1",
       "date": "2026-11-16",
