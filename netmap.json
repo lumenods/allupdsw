@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.7",
+  "latest": "1.28.8",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.8",
+      "date": "2026-11-16",
+      "type": "patch",
+      "changes": [
+        "Импорт Visio: у точек привязки цветной номер и понятная ошибка в метрах; с 4 точек NetMap сам называет неверную точку; клик по номеру показывает точку на схеме.",
+        "Импорт Visio: схема полупрозрачно поверх карты при проверке и при выборе новой точки (карта сама переходит к ожидаемому месту); схема для указания точек подробнее."
+      ],
+      "changes_en": [
+        "Visio import: colour-coded point numbers with a clear error in metres; from 4 points NetMap names the wrong point; clicking a number shows the point on the schema.",
+        "Visio import: the schema image is overlaid semi-transparently on the map when checking and when picking a new point (the map jumps to the expected place); higher-resolution schema for picking points."
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.7",
       "date": "2026-11-16",
