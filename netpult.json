@@ -1,0 +1,47 @@
+{
+  "$schema": "./schema/project.schema.json",
+  "project": "netpult",
+  "title": "NetPult — запуск скриптов на серверах и настройка коммутаторов",
+  "title_en": "NetPult — remote scripts and switch provisioning",
+  "repository": "https://github.com/lumenods/NetPult",
+  "latest": "1.0.0",
+  "update_commands": {
+    "linux": [
+      "su -",
+      "cd /opt/NetPult",
+      "git checkout main",
+      "git pull",
+      "sh deploy/install.sh"
+    ],
+    "agent": [
+      "su -",
+      "cd /opt/NetPult",
+      "git checkout main",
+      "git pull",
+      "sh deploy/install.sh agent"
+    ]
+  },
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-11-16",
+      "type": "initial",
+      "changes": [
+        "Первый выпуск: запуск разрешённых скриптов с параметрами на серверах через агента, вывод в реальном времени",
+        "Лимиты памяти/CPU/процессов на скрипт (cgroup v2), защита сервера, мониторинг, отслеживание файлов, уведомления",
+        "Вход через центр авторизации (OIDC) и аварийный локальный вход; права по ролям; журнал действий",
+        "Настройка коммутаторов: опрос по SNMP, районы по IP, шаблоны Jinja2, прошивка по этапам через telnet/ssh/SNMP и TFTP, требуемая версия прошивки",
+        "Конструктор команд блоками, чтение вывода в переменные, загрузка команд из файла, подробный журнал команд",
+        "Установщик для Debian/Ubuntu без Docker: центр (nginx, HTTPS) и агент"
+      ],
+      "changes_en": [
+        "First release: run allowed scripts with parameters on servers via an agent, live output",
+        "Per-script memory/CPU/process limits (cgroup v2), server protection, monitoring, file tracking, notifications",
+        "Sign-in via the auth center (OIDC) and local emergency sign-in; role-based permissions; audit log",
+        "Switch provisioning: SNMP discovery, districts by IP, Jinja2 templates, staged firmware via telnet/ssh/SNMP and TFTP, required firmware version",
+        "Block-based command builder, output capture into variables, commands from a file, detailed command log",
+        "Installer for Debian/Ubuntu without Docker: center (nginx, HTTPS) and agent"
+      ]
+    }
+  ]
+}

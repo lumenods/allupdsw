@@ -216,6 +216,7 @@ python3 -m unittest discover -s tests -v
 | [netmap](netmap.json) — карта сети | 1.23.0 | https://github.com/lumenods/NetMap |
 | [erpibig](erpibig.json) — ERP/CRM провайдера | 1.7.0 | https://github.com/lumenods/erpibig |
 | [authcentrale](authcentrale.json) — aCentraLe, единый центр авторизации | 1.0.0 | https://github.com/lumenods/authcentrale |
+| [netpult](netpult.json) — скрипты на серверах и настройка коммутаторов | 1.0.0 | https://github.com/lumenods/NetPult |
 
 ## Лицензия
 
