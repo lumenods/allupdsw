@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.2",
+  "latest": "1.28.3",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.3",
+      "date": "2026-11-16",
+      "type": "patch",
+      "changes": [
+        "Исправлено: импорт Visio — кнопки окна привязки объясняют, чего не хватает (раньше молчали до 3 точек); подсказка «Шаг 1»",
+        "Исправлено: отключённые кнопки во всём интерфейсе выглядят отключёнными"
+      ],
+      "changes_en": [
+        "Fixed: Visio import — georeferencing buttons explain what is missing (were silent until 3 points); \"Step 1\" hint",
+        "Fixed: disabled buttons look disabled across the interface"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.2",
       "date": "2026-11-16",
