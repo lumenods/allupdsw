@@ -1,0 +1,21 @@
+name: cve
+on:
+  push:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+jobs:
+  cve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: CVE-проверка зависимостей allupdsw
+        run: python3 tools/cve_scan.py . --out cve-report --sbom cve-report/sbom.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cve-report
+          path: cve-report

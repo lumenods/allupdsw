@@ -278,6 +278,7 @@ class ClientFetchTests(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.srv.shutdown()
+        cls.srv.server_close()
         cls.tmp.dir.cleanup()
 
     def test_http_ok(self):

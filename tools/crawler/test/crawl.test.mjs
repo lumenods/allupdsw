@@ -136,12 +136,13 @@ describe('вход', { timeout: 60000 }, () => {
 });
 
 describe('режимы и ограничения', { timeout: 120000 }, () => {
-  test('forms=none не отправляет формы; без security нет атакующих проверок', async () => {
+  test('без security и мобильной версии: формы всё равно проверяются, атак нет', async () => {
     const site = await startVulnerable();
     try {
-      const rep = await new Crawler({ url: site.url, out: tmp('none'), login: LOGIN, forms: 'none', security: false, mobile: false, timeout: 5000 }).run();
-      assert.equal(rep.stats.formSubmits, 0);
-      assert.equal(site.state.comments.length, 0);
+      const rep = await new Crawler(validateOptions({ url: site.url, out: tmp('nosec'), login: LOGIN, security: false, mobile: false, timeout: 5000 })).run();
+      assert.ok(rep.stats.formSubmits > 0, 'формы должны проверяться всегда');
+      assert.ok(site.state.comments.length > 0);
+      assert.ok(!site.state.comments.some((c) => /crawler-xss|1337/.test(c.text + c.author)));
       assert.ok(!rep.findings.some((f) => /^sec\.(xss|ssti|sql_error|path_traversal|open_redirect|sensitive_file|no_auth)/.test(f.id)));
       assert.ok(!rep.findings.some((f) => f.id.startsWith('mobile.')));
     } finally {
@@ -162,7 +163,7 @@ describe('режимы и ограничения', { timeout: 120000 }, () => {
   test('maxPages и exclude соблюдаются', async () => {
     const site = await startVulnerable();
     try {
-      const rep = await new Crawler({ url: site.url, out: tmp('lim'), login: LOGIN, maxPages: 3, exclude: '/comments', forms: 'none', mobile: false, security: false, timeout: 5000 }).run();
+      const rep = await new Crawler({ url: site.url, out: tmp('lim'), login: LOGIN, maxPages: 3, exclude: '/comments', forms: 'safe', mobile: false, security: false, timeout: 5000 }).run();
       assert.ok(rep.stats.pages <= 3);
       assert.ok(!rep.pages.some((p) => p.url.includes('/comments')));
     } finally {
@@ -172,15 +173,16 @@ describe('режимы и ограничения', { timeout: 120000 }, () => {
   test('public исключает намеренно открытые страницы из проверки доступа', async () => {
     const site = await startVulnerable();
     try {
-      const rep = await new Crawler({ url: site.url, out: tmp('pub'), login: LOGIN, public: '/admin$', forms: 'none', mobile: false, timeout: 5000 }).run();
+      const rep = await new Crawler({ url: site.url, out: tmp('pub'), login: LOGIN, public: '/admin$', forms: 'safe', mobile: false, timeout: 5000 }).run();
       assert.ok(!rep.findings.some((f) => f.id === 'sec.no_auth' && f.url.endsWith('/admin')));
     } finally {
       await site.close();
     }
   });
-  test('недоступный стенд — отчёт с ошибкой запроса, без падения', async () => {
+  test('недоступный стенд — отчёт с ошибкой запроса, без падения; «форм не найдено»', async () => {
     const rep = await new Crawler({ url: 'http://127.0.0.1:9/', out: tmp('down'), mobile: false, security: false, timeout: 3000 }).run();
     assert.ok(rep.findings.some((f) => f.id === 'http.request_failed'));
+    assert.ok(rep.findings.some((f) => f.id === 'form.none_found'));
   });
 });
 
@@ -194,6 +196,7 @@ describe('настройки: проверка значений и против�
   });
   test('перечисления', () => {
     bad({ forms: 'all' }, /--forms/);
+    bad({ forms: 'none' }, /отключить нельзя/);
     bad({ lang: 'de' }, /--lang/);
     bad({ failOn: 'error' }, /--fail-on/);
   });

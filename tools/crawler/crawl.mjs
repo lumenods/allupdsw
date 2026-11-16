@@ -30,7 +30,7 @@ export const DEFAULTS = {
   maxMobilePages: 60,
   delay: 0, // мс между запросами
   timeout: 15000,
-  forms: 'full', // none | safe | full
+  forms: 'full', // safe | full — проверку форм отключить нельзя
   allowDestructive: false,
   include: null, // RegExp-строка: обходить только подходящие URL
   exclude: null, // RegExp-строка: не обходить
@@ -57,7 +57,7 @@ const HELP = `Краулер проверки проектов ${VERSION}
   --lang ru|en             язык отчёта                                             [ru]
   --max-pages N            предел страниц                                          [300]
   --max-depth N            глубина обхода                                          [6]
-  --forms none|safe|full   формы: не трогать / допустимые+граничные / + атаки      [full]
+  --forms safe|full        формы: допустимые+граничные / + атаки (отключить нельзя) [full]
   --allow-destructive      отправлять и формы удаления/выхода (по умолчанию нет)
   --include RE / --exclude RE   фильтр URL
   --public RE              страницы, открытые без входа намеренно
@@ -193,7 +193,7 @@ export class Crawler {
       this.state = await this.ctx.storageState();
 
       await this.crawl();
-      if (this.o.forms !== 'none') await this.testForms();
+      await this.testForms(); // формы проверяются всегда
       if (this.o.security) {
         await this.probeQueryXss();
         await this.recheckStoredXss();
@@ -432,7 +432,13 @@ export class Crawler {
   }
 
   async testForms() {
+    if (this.forms.size === 0) {
+      this.f.add('form.none_found', this.o.url, `страниц обойдено: ${this.pages.size}`);
+    }
     for (const entry of this.forms.values()) {
+      for (const x of entry.form.fields.filter((y) => y.type === 'file')) {
+        this.f.add('form.file_upload', entry.pageUrl, `${entry.action} поле ${x.name}`, { dedupe: `file|${entry.action}|${x.name}` });
+      }
       if (!this.o.allowDestructive && this.isDestructive(entry)) {
         this.f.add('form.skipped_destructive', entry.pageUrl, `${entry.form.method.toUpperCase()} ${entry.action} «${entry.form.submitText.trim()}»`);
         continue;
@@ -968,7 +974,8 @@ export function validateOptions(o) {
       if (!/^https?:$/.test(u.protocol)) errs.push('--url: только http/https');
     } catch { errs.push(`--url: некорректный адрес ${o.url}`); }
   }
-  if (o.forms && !['none', 'safe', 'full'].includes(o.forms)) errs.push('--forms: none | safe | full');
+  if (o.forms === 'none') errs.push('--forms none: проверку форм отключить нельзя (концепция, раздел 15). Допустимо: safe | full');
+  else if (o.forms && !['safe', 'full'].includes(o.forms)) errs.push('--forms: safe | full');
   if (o.lang && !['ru', 'en'].includes(o.lang)) errs.push('--lang: ru | en');
   if (o.failOn && !['critical', 'high', 'medium', 'low', 'info', 'never'].includes(o.failOn)) errs.push('--fail-on: critical|high|medium|low|info|never');
   for (const k of ['maxPages', 'maxDepth', 'maxForms', 'bruteforce', 'delay', 'timeout']) {

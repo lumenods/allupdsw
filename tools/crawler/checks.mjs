@@ -15,6 +15,8 @@ export const CHECKS = {
   // Формы
   'form.server_error': ['high', 'Форма вызвала ошибку сервера (5xx)', 'Form caused server error (5xx)'],
   'form.skipped_destructive': ['info', 'Форма пропущена как разрушающая (удаление/выход)', 'Form skipped as destructive (delete/logout)'],
+  'form.none_found': ['medium', 'Не найдено ни одной формы: проверьте вход и обход', 'No forms found: check login and crawl scope'],
+  'form.file_upload': ['info', 'Поле загрузки файла: тип, размер и имя файла проверяются тестами проекта', 'File upload field: verify type/size/name in project tests'],
   'form.no_label': ['low', 'Поле формы без подписи (label/aria-label/title)', 'Form field without label'],
   'form.password_autocomplete': ['low', 'Поле пароля без autocomplete=current-password/new-password', 'Password field without proper autocomplete'],
 
