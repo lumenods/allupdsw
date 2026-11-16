@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.4",
+  "latest": "1.28.5",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.5",
+      "date": "2026-11-16",
+      "type": "patch",
+      "changes": [
+        "Исправлено: импорт Visio — привязка подобием (сдвиг, поворот, масштаб): схема больше не растягивается на сотни километров; показ масштаба и проверка правдоподобия",
+        "Исправлено: предпросмотр схемы на карте — кнопки «Вернуться к привязке» и «Убрать с карты»"
+      ],
+      "changes_en": [
+        "Fixed: Visio import — similarity georeferencing (shift, rotation, scale): the schema no longer stretches over hundreds of kilometres; scale shown and plausibility checked",
+        "Fixed: schema preview on the map — \"Back to georeferencing\" and \"Remove from map\" buttons"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.4",
       "date": "2026-11-16",
