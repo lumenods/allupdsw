@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.27.2",
+  "latest": "1.28.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,24 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.0",
+      "date": "2026-11-16",
+      "type": "minor",
+      "changes": [
+        "Новое: импорт схемы из Visio (VSDX) с привязкой к карте по точкам; трафареты — опоры, муфты, коробки, оборудование; линии по цветам — кабели",
+        "Новое: подписи муфт «А.3.2.1» — названия, направление/плата/порт/номер записываются в муфту для привязки OLT",
+        "Исправлено: импорт KML/Visio больших карт — секунды вместо минут; дубли объектов и кабелей определяются точнее",
+        "Изменено: nginx принимает файлы до 100 МБ"
+      ],
+      "changes_en": [
+        "New: Visio (VSDX) import with point-based georeferencing; stencils to poles, closures, boxes, equipment; colored lines to cables",
+        "New: closure labels \"A.3.2.1\" become names; direction/board/port/number stored for OLT binding",
+        "Fixed: large KML/Visio imports take seconds instead of minutes; better duplicate detection",
+        "Changed: nginx accepts uploads up to 100 MB"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.27.2",
       "date": "2026-11-15",
