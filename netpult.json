@@ -4,7 +4,7 @@
   "title": "NetPult — запуск скриптов на серверах и настройка коммутаторов",
   "title_en": "NetPult — remote scripts and switch provisioning",
   "repository": "https://github.com/lumenods/NetPult",
-  "latest": "1.0.0",
+  "latest": "1.1.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -22,6 +22,28 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.1.0",
+      "date": "2026-11-17",
+      "type": "minor",
+      "changes": [
+        "Номер версии в меню на всех страницах, окно «О программе»: сборка, коммит, «Что нового»",
+        "Проверка обновлений через реестр allupdsw: при запуске, раз в сутки и по кнопке; метка новой версии (обновления безопасности — красная), команды обновления центра и агентов",
+        "Режим отладки без перезапуска: на время или до выключения, уровни по модулям, request_id в ответах и ошибках, скрытие паролей и токенов в журнале",
+        "Страница «Диагностика»: база, агенты, TFTP, вход, обновления, журнал сервера, конфигурация без секретов; отчёт для отладки за период",
+        "Журнал действий: выборка за точный период с часовым поясом, фильтры, выгрузка CSV/JSON/TXT; API /api/v1/audit",
+        "Исправлено: неизвестный часовой пояс и непредвиденные ошибки больше не дают пустой ответ 500 — показывается сообщение и request_id"
+      ],
+      "changes_en": [
+        "Version number in the menu on every page, About dialog: build, commit, what's new",
+        "Update check via the allupdsw registry: at start, daily and on demand; new-version badge (red for security updates), update commands for the center and agents",
+        "Debug mode without restart: for a period or until turned off, per-module levels, request_id in responses and errors, passwords and tokens masked in logs",
+        "Diagnostics page: database, agents, TFTP, sign-in, updates, server log, config without secrets; debug report for a period",
+        "Audit log: exact period with time zone, filters, CSV/JSON/TXT export; /api/v1/audit API",
+        "Fixed: an unknown time zone and unexpected errors no longer return a bare 500 — a message and request_id are shown"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-16",
