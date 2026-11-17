@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.10",
+  "latest": "1.28.11",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.11",
+      "date": "2026-11-17",
+      "type": "patch",
+      "changes": [
+        "Импорт Visio: предупреждение о точках привязки из прежних версий (могли сбивать схему) с советом сбросить их; кольцо «примерно здесь» — только когда точки уже стоят далеко друг от друга.",
+        "Окно «Создан проект»: кнопка больше не вылезает за край."
+      ],
+      "changes_en": [
+        "Visio import: warning about reference points saved by earlier versions (they could skew the schema) with advice to reset them; the \"approximately here\" ring only appears once points are far apart.",
+        "\"Project created\" dialog: the button no longer overflows the window."
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.10",
       "date": "2026-11-17",
