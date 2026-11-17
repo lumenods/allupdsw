@@ -4,7 +4,7 @@
   "title": "NetPult — запуск скриптов на серверах и настройка коммутаторов",
   "title_en": "NetPult — remote scripts and switch provisioning",
   "repository": "https://github.com/lumenods/NetPult",
-  "latest": "1.1.0",
+  "latest": "1.2.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -22,6 +22,26 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.2.0",
+      "date": "2026-11-17",
+      "type": "minor",
+      "changes": [
+        "Права по концепции: реестр прав в коде (просмотр и запуск скриптов с ограничением по серверам и скриптам, настройка коммутаторов, журнал, управление доступом, диагностика)",
+        "Страница «Доступ»: роли (встроенные и свои), локальные группы, сопоставления «группа центра → роль», пользователи с итоговыми правами и источником каждого права, журнал изменений",
+        "Перед сохранением показывается, что изменится у пользователей; блокировка пользователя сразу закрывает его сессии; нельзя убрать последнего администратора доступа",
+        "API /api/v1/access/*: манифест и краткое описание прав, роли, группы, сопоставления, пользователи, проверка права; dry_run, ETag/If-Match, понятные коды ошибок",
+        "Раздел roles из central.yaml переносится в базу один раз при обновлении — прежние права сохраняются"
+      ],
+      "changes_en": [
+        "Permissions per the concept: a permission registry in code (viewing and running scripts limited by servers and scripts, switch provisioning, audit, access management, diagnostics)",
+        "Access page: roles (built-in and custom), local groups, auth-center group → role mappings, users with effective permissions and the source of each, change log",
+        "A preview of what changes for users before saving; blocking a user ends their sessions at once; the last access administrator cannot be removed",
+        "/api/v1/access/* API: manifest and summary, roles, groups, mappings, users, permission check; dry_run, ETag/If-Match, clear error codes",
+        "The roles section of central.yaml is migrated to the database once on upgrade — existing permissions are kept"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.1.0",
       "date": "2026-11-17",
