@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.29.0",
+  "latest": "1.30.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,20 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.30.0",
+      "date": "2026-11-17",
+      "type": "minor",
+      "changes": [
+        "Подложка запоминается для каждого проекта отдельно.",
+        "Подложка проекта: администратор задаёт, с какой подложкой проект открывается у всех, кто ещё не выбирал свою («★ Сделать подложкой проекта» или карточка проекта)."
+      ],
+      "changes_en": [
+        "The basemap choice is remembered per project.",
+        "Project basemap: an admin sets the basemap a project opens with for everyone who has not chosen their own (\"★ Make project basemap\" or the project card)."
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.29.0",
       "date": "2026-11-17",
