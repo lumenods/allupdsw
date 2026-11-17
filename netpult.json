@@ -4,7 +4,7 @@
   "title": "NetPult — запуск скриптов на серверах и настройка коммутаторов",
   "title_en": "NetPult — remote scripts and switch provisioning",
   "repository": "https://github.com/lumenods/NetPult",
-  "latest": "1.3.0",
+  "latest": "1.4.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -22,6 +22,28 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.4.0",
+      "date": "2026-11-17",
+      "type": "minor",
+      "changes": [
+        "Английский язык интерфейса: переключатель RU / EN рядом с номером версии (и на странице входа), выбор сохраняется в профиле; язык системы по умолчанию — настройка language",
+        "Сообщения API и ошибки — на языке из Accept-Language или выбранном пользователем, коды ошибок не зависят от языка; даты и числа — по языку; заголовки выгрузки журнала — на языке пользователя",
+        "Справка в интерфейсе (/help) на русском и английском: назначение, архитектура, установка, руководство пользователя и администратора, API, тестирование, неполадки, история версий, лицензии",
+        "Справка в PDF на двух языках (титульный лист с версией, оглавление, скриншоты), «Скачать PDF»; скриншоты всех экранов снимаются автоматически (make screenshots, make pdf)",
+        "Реестр функций docs/FEATURES.md и проверки документации в тестах; краулер проверяет интерфейс и на английском",
+        "Список сторонних компонентов и лицензий THIRD_PARTY_LICENSES.md; выпуски и теги GitHub ставятся автоматически, PDF прикладывается к выпуску"
+      ],
+      "changes_en": [
+        "English interface: an RU / EN switch next to the version number (and on the sign-in page), the choice is saved in the profile; the system default language is the language setting",
+        "API messages and errors use the language from Accept-Language or the user's choice, error codes do not depend on the language; dates and numbers follow the language; audit export headers use the user's language",
+        "Help in the interface (/help) in Russian and English: purpose, architecture, installation, user and administrator guide, API, testing, troubleshooting, version history, licenses",
+        "Help as PDF in both languages (title page with the version, contents, screenshots), “Download PDF”; screenshots of all screens are taken automatically (make screenshots, make pdf)",
+        "Feature registry docs/FEATURES.md and documentation checks in tests; the crawler checks the interface in English too",
+        "Third-party components and licenses in THIRD_PARTY_LICENSES.md; GitHub releases and tags are created automatically, the PDF is attached to the release"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.3.0",
       "date": "2026-11-17",
