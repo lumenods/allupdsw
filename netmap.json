@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.11",
+  "latest": "1.29.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,22 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.29.0",
+      "date": "2026-11-17",
+      "type": "minor",
+      "changes": [
+        "Интеграция с Zabbix 8.0 LTS: статусы оборудования, привязка хостов, уровни ONU; подсказка про доступ к API у ролей (в 8.0 по умолчанию выключен).",
+        "Модули Zabbix: подсказка, если модуль не для этой версии Zabbix; сессия по логину/паролю закрывается после запроса.",
+        "Справка «Установка и обновление»: блок «На этом сервере» (для администратора) — настоящие папки этой установки и готовые команды; то же в Диагностике."
+      ],
+      "changes_en": [
+        "Zabbix 8.0 LTS integration: device statuses, host linking, ONU levels; hint about API access in roles (disabled by default in 8.0).",
+        "Zabbix modules: hint when the module does not match the Zabbix version; login/password sessions are closed after each request.",
+        "Help \"Installation and update\": \"On this server\" block (admins only) with the real folders of this installation and ready-made commands; also in Diagnostics."
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.11",
       "date": "2026-11-17",
