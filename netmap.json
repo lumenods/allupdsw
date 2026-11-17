@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.28.9",
+  "latest": "1.28.10",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,18 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.28.10",
+      "date": "2026-11-17",
+      "type": "patch",
+      "changes": [
+        "Импорт Visio: при выборе точки на карте больше не показывается картинка схемы (её легко принять за карту, и схема получалась уменьшенной и повёрнутой) — только кольцо «примерно здесь»; картинка поверх карты осталась для проверки."
+      ],
+      "changes_en": [
+        "Visio import: while picking a point on the map the schema image is no longer overlaid (it was easy to mistake for the map, producing a shrunken and rotated schema) — only an \"approximately here\" ring; the overlay remains for checking."
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.28.9",
       "date": "2026-11-17",
