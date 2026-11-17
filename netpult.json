@@ -4,7 +4,7 @@
   "title": "NetPult — запуск скриптов на серверах и настройка коммутаторов",
   "title_en": "NetPult — remote scripts and switch provisioning",
   "repository": "https://github.com/lumenods/NetPult",
-  "latest": "1.2.0",
+  "latest": "1.3.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -22,6 +22,26 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.3.0",
+      "date": "2026-11-17",
+      "type": "minor",
+      "changes": [
+        "Подключение к центру авторизации aCentraLe одноразовым кодом («Доступ» → «Центр авторизации»): проверка центра по отпечатку сертификата, свой ключ NetPult вместо общего секрета (private_key_jwt)",
+        "Смена ключа без участия центра и без прерывания входа, проверка связи (и отметка раз в час), отключение с любой стороны",
+        "Выход в центре сразу закрывает сессии в NetPult (Back-Channel Logout)",
+        "Центр управляет сопоставлениями «должность → роль» через API NetPult своим сервисным токеном; свои роли попадают в манифест, центр узнаёт об их изменении сам",
+        "Ручное подключение через блок oidc в central.yaml осталось для стендов; подключение кодом имеет приоритет"
+      ],
+      "changes_en": [
+        "Connection to the aCentraLe auth center with a one-time code (Access → Auth center): the center is verified by certificate fingerprint, NetPult uses its own key instead of a shared secret (private_key_jwt)",
+        "Key rotation without the center and without sign-in interruption, connection check (and an hourly heartbeat), disconnect from either side",
+        "Signing out in the center ends NetPult sessions at once (Back-Channel Logout)",
+        "The center manages position → role mappings via the NetPult API with its service token; custom roles are in the manifest and the center learns about changes automatically",
+        "Manual connection via the oidc block in central.yaml remains for test stands; connection by code takes precedence"
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.2.0",
       "date": "2026-11-17",
