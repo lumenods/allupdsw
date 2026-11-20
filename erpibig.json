@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.7.2",
+  "latest": "1.8.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,25 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.8.0",
+      "date": "2026-11-20",
+      "type": "minor",
+      "changes": [
+        "Новое: история диагностики по договору — каждый запуск сохраняется с выводом, сводкой, кто и когда",
+        "Новое: в заявке — снимок диагностики при приёме и при выполнении, сравнение «при приёме — последняя», запуски из заявки",
+        "Новое: запуски доп. действий из BGBilling (netdiag) подтягиваются из базы netdiag по договору (ERP_NETDIAG_DB_URL)",
+        "Исправлено: включение 2FA на новой версии библиотеки PyOTP"
+      ],
+      "changes_en": [
+        "New: contract diagnostics history — every run is saved with output, summary, who and when",
+        "New: in a ticket — diagnostics snapshot on acceptance and completion, “on acceptance vs latest” comparison, runs from the ticket",
+        "New: BGBilling additional action runs (netdiag) are pulled from the netdiag database by contract (ERP_NETDIAG_DB_URL)",
+        "Fixed: enabling 2FA with the new PyOTP library version"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.7.2",
       "date": "2026-11-12",
