@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.8.0",
+  "latest": "1.9.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.9.0",
+      "date": "2026-11-20",
+      "type": "minor",
+      "changes": [
+        "Новое: кнопки диагностики ERP запускают те же доп. действия договора netdiag, что и BGBilling (через API BGBilling)",
+        "Новое: диагностика порта и тест кабеля для абонентов на коммутаторе; кнопки показываются по типу подключения",
+        "Изменено: история netdiag читается через представление netdiag_history пользователем netdiag_erp (netdiag 0.10.0+)"
+      ],
+      "changes_en": [
+        "New: ERP diagnostics buttons run the same netdiag contract additional actions as BGBilling (via the BGBilling API)",
+        "New: port diagnostics and cable test for subscribers on a switch; buttons are shown by connection type",
+        "Changed: netdiag history is read through the netdiag_history view by the netdiag_erp user (netdiag 0.10.0+)"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.8.0",
       "date": "2026-11-20",
