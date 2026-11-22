@@ -3,7 +3,7 @@
   "project": "netmap",
   "title": "NetMap — карта сети",
   "repository": "https://github.com/lumenods/NetMap",
-  "latest": "1.31.0",
+  "latest": "1.32.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -19,6 +19,22 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.32.0",
+      "date": "2026-11-22",
+      "type": "minor",
+      "changes": [
+        "Привязка муфты к OLT без платы: «плата не добавлена» (ждёт плату и сама цепляется к порту) или «только OLT».",
+        "«Отвязать…» предлагает: перенести на другой порт или плату, оставить у OLT без платы или отвязать совсем.",
+        "Привязки не теряются при снятии платы и смене модели OLT; в карточке OLT — «Муфт без порта»."
+      ],
+      "changes_en": [
+        "Bind a closure to an OLT without a board: \"board not added\" (waits and attaches to the port automatically) or \"OLT only\".",
+        "\"Unbind…\" offers: move to another port or board, keep at the OLT without a board, or unbind completely.",
+        "Bindings survive board removal and OLT model changes; the OLT card shows \"Closures without a port\"."
+      ],
+      "min_upgrade_from": "1.0.0"
+    },
     {
       "version": "1.31.0",
       "date": "2026-11-22",
