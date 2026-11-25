@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.9.0",
+  "latest": "1.9.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,25 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.9.1",
+      "date": "2026-11-25",
+      "type": "patch",
+      "changes": [
+        "Исправлено: при недоступной базе — понятное «База данных недоступна, повторите через минуту» вместо внутренней ошибки; после возврата базы работа без перезапуска",
+        "Исправлено: /api/health проверяет базу — мониторинг видит её простой",
+        "Исправлено: список заявок быстрее при тысячах открытых",
+        "Новое: длительный прогон стабильности scripts/soak_test.py"
+      ],
+      "changes_en": [
+        "Fixed: when the database is unavailable — a clear “Database unavailable, try again in a minute” instead of an internal error; works again without a restart once the database is back",
+        "Fixed: /api/health checks the database — monitoring sees its downtime",
+        "Fixed: the ticket list is faster with thousands of open tickets",
+        "New: long-running stability test scripts/soak_test.py"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.9.0",
       "date": "2026-11-20",
