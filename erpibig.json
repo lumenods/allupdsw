@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.10.0",
+  "latest": "1.11.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.11.0",
+      "date": "2026-11-27",
+      "type": "minor",
+      "changes": [
+        "Новое: OLT без IP в BGBilling опознаётся по имени или папке и сопоставляется с узлом Zabbix, в том числе автоматически по имени",
+        "Новое: формат значения из групп выражения — PON-порт в виде, как в Zabbix (0-1-3 → 0/1/3)",
+        "Новое: в мастере у каждого устройства видно, что извлечено"
+      ],
+      "changes_en": [
+        "New: an OLT without an IP in BGBilling is identified by name or folder and mapped to a Zabbix host, also automatically by name",
+        "New: value format from expression groups — the PON port as in Zabbix (0-1-3 → 0/1/3)",
+        "New: the wizard shows what was extracted from each device"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.10.0",
       "date": "2026-11-27",
