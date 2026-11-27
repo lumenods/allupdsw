@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.11.0",
+  "latest": "1.11.1",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.11.1",
+      "date": "2026-11-27",
+      "type": "patch",
+      "changes": [
+        "Новое: профиль дерева «папка OLT → папка платы gpon_olt-1/1 → порт 35_zte_1_1» — PON-порт, номер ONU и OLT по имени папки или IP",
+        "Исправлено: номер ONU из интерфейса вида «Интерфейс 3»",
+        "Исправлено: адрес relay в […] у порта больше не показывается как шлюз и не путается с IP OLT"
+      ],
+      "changes_en": [
+        "New: profile for the “OLT folder → board folder gpon_olt-1/1 → port 35_zte_1_1” tree — PON port, ONU number and OLT by folder name or IP",
+        "Fixed: ONU number from an interface like “Интерфейс 3”",
+        "Fixed: the relay address in […] of a port is no longer shown as a gateway or confused with the OLT IP"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.11.0",
       "date": "2026-11-27",
