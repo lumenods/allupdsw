@@ -4,7 +4,7 @@
   "title": "ErpiBig — ERP/CRM провайдера",
   "title_en": "ErpiBig — ISP ERP/CRM",
   "repository": "https://github.com/lumenods/erpibig",
-  "latest": "1.9.1",
+  "latest": "1.10.0",
   "update_commands": {
     "linux": [
       "su -",
@@ -15,6 +15,23 @@
     ]
   },
   "versions": [
+    {
+      "version": "1.10.0",
+      "date": "2026-11-27",
+      "type": "minor",
+      "changes": [
+        "Новое: мастер настройки BGBilling — откуда брать серийный номер ONU, PON-порт, телефон, адрес; как распознавать устройства дерева Inet; всё проверяется на данных до сохранения",
+        "Новое: уровни ONU из Zabbix (7 и 8, шаблон ZTE_C600) в карточке абонента и заявке — сигнал, состояние, трафик, график за сутки",
+        "Новое: в мастере — какая папка BGBilling (OLT) соответствует какому узлу Zabbix, автоматически по IP и проверка на абоненте"
+      ],
+      "changes_en": [
+        "New: BGBilling setup wizard — where to take the ONU serial number, PON port, phone, address from; how to recognize Inet tree devices; everything is checked on data before saving",
+        "New: ONU levels from Zabbix (7 and 8, ZTE_C600 template) in the subscriber card and ticket — signal, state, traffic, 24-hour chart",
+        "New: in the wizard — which BGBilling folder (OLT) corresponds to which Zabbix host, automatically by IP, and a check on a subscriber"
+      ],
+      "breaking": false,
+      "security": false
+    },
     {
       "version": "1.9.1",
       "date": "2026-11-25",
